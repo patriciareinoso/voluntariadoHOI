@@ -1,0 +1,13 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <p>Ingrese el año:</p>
+        <br>
+        {{ form.as_p }}
+        <br>
+        <input type="hidden" name="action" value="generar_reporte_ano" />
+        <input type="submit" name="apply" value="Aceptar" />
+    </form>
+{% endblock %}

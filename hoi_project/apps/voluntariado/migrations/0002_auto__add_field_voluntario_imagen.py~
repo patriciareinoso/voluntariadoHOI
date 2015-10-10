@@ -1,0 +1,22 @@
+# -*- coding: utf-8 -*-
+from south.utils import datetime_utils as datetime
+from south.db import db
+from south.v2 import SchemaMigration
+from django.db import models
+
+
+class Migration(SchemaMigration):
+
+    def forwards(self, orm):
+        # Adding field 'Voluntario.imagen'
+        db.add_column(u'voluntariado_voluntario', 'imagen',
+                      self.gf('django.db.models.fields.files.ImageField')(default='imagenes/ninguna.png', max_length=100),
+                      keep_default=False)
+
+
+    def backwards(self, orm):
+        # Deleting field 'Voluntario.imagen'
+        db.delete_column(u'voluntariado_voluntario', 'imagen')
+
+
+    complete_apps = ['voluntariado']

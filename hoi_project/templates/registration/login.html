@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+
+{% block extra_css %}
+<link href="{% static 'css/login.css' %}" rel="stylesheet">
+{% endblock extra_css %}
+
+
+{% block page %} 
+
+<div class="wrapper">
+	
+	<form class="form-signin" method="post" action=".">  
+		{% csrf_token %}     
+		<h2 class="form-signin-heading">Ingrese sus datos</h2>
+		<p>
+			<label for="id_username">Usuario:</label>
+			{{ form.username|attr:"class:form-control" }}
+		</p>
+		<p>
+			<label for="id_password">Contraseña:</label>
+			{{ form.password|attr:"class:form-control" }}
+		</p>
+		{% if next %}
+		<input type="hidden" name="next" value="{{ next }}" />
+		{% else %}
+		<input type="hidden" name="next" value="/" />
+		{% endif %}
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>  
+	</form>
+	{% if form.errors %}
+	<p>Existe un error en tus credenciales, vuelve a intentar.</p>
+	{% endif %}
+</div>
+{% endblock page %}

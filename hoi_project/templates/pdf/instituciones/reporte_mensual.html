@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <style type="text/css">
+            @page {
+                size: ;
+                margin: 1cm;
+                @frame footer {
+                        -pdf-frame-content: footerblock;
+                        bottom: 1cm;
+                        margin-left: 1cm;
+                        margin-right: 1cm;
+                        margin-top: 1cm;
+                        height: 1cm;
+                }
+            }
+
+            h1 {
+                text-align: center;
+            }
+
+            th {
+                font-size: 1.2em;
+            }
+
+            th, td {
+                text-align: left;
+                vertical-align: middle;
+                margin: 0;
+            }
+
+        </style>
+    </head>
+    <header>
+    <div>
+        <div id="logo">
+            <img src="./static/logo.jpg" height="120px">
+        </div>
+    </div>
+    </header>
+    <body>
+        <h1>Reporte mensual {{ date }}</h1>
+        {% for organizacion in lista_instituciones %}
+            <h2>{{ organizacion.0 }}</h2>
+                <table>
+                    <tr>
+                        <th>Pasante</th>
+                        <th>Horas</th>
+                        <th>Fecha</th>
+                        <th>Actividad</th>
+                    </tr>
+                    {% for entrada in organizacion.1.0 %}
+                        <tr>
+                            <td>{{ entrada.voluntario.primer_nombre }} {{ entrada.voluntario.apellido }}</td>
+                            <td>{{ entrada.horas }}</td>
+                            <td>{{ entrada.fecha }}</td>
+                            <td>{{ entrada.actividad }}</td>
+                        </tr>
+                    {% endfor %}
+                    <tr>
+                        <td><b>TOTAL</b></td>
+                        <td>{{ organizacion.1.1 }}</td>
+                        <td></td>
+                    </tr>
+                </table>
+            <hr>
+        {% endfor %}
+        <div id="footerblock">
+            <pdf:pagenumber>
+        </div>
+    </body>
+</html>
