@@ -4,8 +4,8 @@ from datetime import date
 
 
 class Proyectos(models.Model):
-    proyecto = models.ForeignKey('voluntariado.Proyecto')
-    voluntario = models.ForeignKey('voluntariado.Voluntario')
+    proyecto = models.ForeignKey('proyectos_academicos.Proyecto')
+    voluntario = models.ForeignKey('proyectos_academicos.Voluntario')
     horas = models.PositiveIntegerField(default=0)
     fecha = models.DateField(default=date.today)
     actividad = models.CharField('Actividad', max_length=200)
@@ -19,8 +19,8 @@ class Proyectos(models.Model):
 
 
 class Servicios(models.Model):
-    servicio = models.ForeignKey('voluntariado.Servicio')
-    voluntario = models.ForeignKey('voluntariado.Voluntario')
+    servicio = models.ForeignKey('proyectos_academicos.Servicio')
+    voluntario = models.ForeignKey('proyectos_academicos.Voluntario')
     horas = models.PositiveIntegerField(default=0)
     fecha = models.DateField(default=date.today)
     actividad = models.CharField('Actividad', max_length=200)

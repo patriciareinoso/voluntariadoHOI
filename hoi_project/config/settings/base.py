@@ -206,7 +206,7 @@ DJANGO_APPS = (
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
-    'apps.voluntariado',
+    'apps.proyectos_academicos',
     'apps.registros',
 
 )

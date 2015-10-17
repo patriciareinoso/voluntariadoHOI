@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.contrib.admin import SimpleListFilter
 from django.utils.translation import ugettext_lazy as _
 from apps.registros.models import Proyectos, Servicios
-from apps.voluntariado.models import Institucion
+from apps.proyectos_academicos.models import Institucion
 from apps.registros.actions import export_as_csv_action
 
 # Filters
@@ -45,6 +45,8 @@ class ProyectosAdmin(admin.ModelAdmin):
     def get_proyecto_estatus(self, obj):
         if obj.proyecto.estatus == 'C':
             return 'Culminado'
+        elif obj.proyecto.estatus == 'I':
+            return 'Iniciando'
         else:
             return 'En proceso'
 
