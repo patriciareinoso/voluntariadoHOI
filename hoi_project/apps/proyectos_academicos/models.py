@@ -16,8 +16,8 @@ class Institucion(models.Model):
         verbose_name = "Institución"
         verbose_name_plural = "Instituciones"
 
-    def __unicode__(self):
-        return unicode(self.nombre)
+    def __str__(self):
+        return self.nombre
 
     def horas_mes(self, mes, ano):
         """ Genera el reporte de horas mensuales """
@@ -104,8 +104,8 @@ class Voluntario(models.Model):
     imagen = models.ImageField(upload_to='imagenes/',
                                default='imagenes/ninguna.png')
 
-    def __unicode__(self):
-        return unicode(self.primer_nombre) + ' ' + unicode(self.apellido)
+    def __str__(self):
+        return self.primer_nombre + ' ' + self.apellido
 
     def horas_mes(self, mes, ano):
         """ Genera el reporte de horas mensuales """
@@ -146,8 +146,8 @@ class CategoriasProyecto(models.Model):
 
     nombre = models.CharField('Nombre', max_length=50)
 
-    def __unicode__(self):
-        return unicode(self.nombre)
+    def __str__(self):
+        return self.nombre
 
 
 class Proyecto(models.Model):
@@ -167,8 +167,8 @@ class Proyecto(models.Model):
                                choices=OPCIONES_ESTATUS)
     categorias = models.ForeignKey(CategoriasProyecto, null=True, blank=True)
 
-    def __unicode__(self):
-        return unicode(self.titulo)
+    def __str__(self):
+        return self.titulo
 
     def horas_mes(self, mes, ano):
         """ Genera el reporte de horas mensuales """
@@ -212,8 +212,8 @@ class Servicio(models.Model):
     servicio = models.CharField('Servicio', max_length=30)
     turno = models.CharField('Turno', max_length=2, choices=OPCIONES_TURNO)
 
-    def __unicode__(self):
-        return unicode(self.servicio)
+    def __str__(self):
+        return self.servicio
 
     def horas_mes(self, mes, ano):
         """ Genera el reporte de horas mensuales """
