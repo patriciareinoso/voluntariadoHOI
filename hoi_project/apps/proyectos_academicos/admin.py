@@ -37,7 +37,7 @@ class InstitucionFilter(SimpleListFilter):
 
 class InstitucionAdmin(admin.ModelAdmin):
     search_fields = ['nombre']
-    actions = ['generar_reporte_mes', 'generar_reporte_ano',
+    actions = [#'generar_reporte_mes', 'generar_reporte_ano',
                export_as_csv_action("Exportar como CSV", fields=['nombre'])]
 
     def generar_reporte_mes(modeladmin, request, queryset):
@@ -121,7 +121,7 @@ class VoluntarioAdmin(admin.ModelAdmin):
     list_filter = ['primer_nombre', 'apellido', 'genero', 'lugar_nacimiento',
                    'estado_civil', 'ocupacion',
                    InstitucionFilter, 'grado_instruccion']
-    actions = ['generar_reporte_mes', 'generar_reporte_ano',
+    actions = [#'generar_reporte_mes', 'generar_reporte_ano',
                export_as_csv_action("Exportar como CSV",
                                     fields=['CI', 'primer_nombre', 'apellido',
                                             'lugar_nacimiento', 'genero',
@@ -223,7 +223,7 @@ class ProyectoAdmin(admin.ModelAdmin):
     list_display = ['titulo', 'especialidad', 'estatus']
     list_filter = ['titulo',
                    'especialidad', 'dependencia', 'estatus']
-    actions = ['generar_reporte_mes', 'generar_reporte_ano',
+    actions = [#'generar_reporte_mes', 'generar_reporte_ano',
                export_as_csv_action("Exportar como CSV",
                                     fields=['titulo', 'especialidad',
                                             'dependencia', 'estatus']
@@ -307,7 +307,7 @@ class ServicioAdmin(admin.ModelAdmin):
     search_fields = ['servicio', 'turno']
     list_display = ['servicio', 'turno']
     list_filter = ['servicio', 'turno']
-    actions = ['generar_reporte_mes', 'generar_reporte_ano',
+    actions = [#'generar_reporte_mes', 'generar_reporte_ano',
                export_as_csv_action("Exportar como CSV",
                                     fields=['servicio', 'turno']
                                     )
