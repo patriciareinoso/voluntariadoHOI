@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.db import models
-from apps.registros.models import Proyectos, Servicios
+from apps.registros.models import Proyectos#, Servicios
 
 
 class Institucion(models.Model):
@@ -101,7 +101,7 @@ class Voluntario(models.Model):
         'Grado de instrucción (*)', max_length=1, choices=OPCIONES_INSTRUCCION)
 
     # Imagen
-    imagen = models.ImageField(upload_to='imagenes/',
+    imagen = models.ImageField('Foto',upload_to='imagenes/',
                                default='imagenes/ninguna.png')
 
     def __unicode__(self):
@@ -144,7 +144,7 @@ class CategoriasProyecto(models.Model):
     class Meta:
         verbose_name = "Categoría"
 
-    nombre = models.CharField('Nombre', max_length=50)
+    nombre = models.CharField('Nombre (*)', max_length=50)
 
     def __unicode__(self):
         return unicode(self.nombre)
@@ -202,46 +202,46 @@ class Proyecto(models.Model):
         return (resultado, horas_ano)
 
 
-class Servicio(models.Model):
+#class Servicio(models.Model):
 
-    OPCIONES_TURNO = (
-        ('am', 'A.M.'),
-        ('pm', 'P.M.'),
-    )
+#    OPCIONES_TURNO = (
+#        ('am', 'A.M.'),
+#        ('pm', 'P.M.'),
+#    )
 
-    servicio = models.CharField('Servicio', max_length=30)
-    turno = models.CharField('Turno', max_length=2, choices=OPCIONES_TURNO)
+#    servicio = models.CharField('Servicio', max_length=30)
+#    turno = models.CharField('Turno', max_length=2, choices=OPCIONES_TURNO)
 
-    def __unicode__(self):
-        return unicode(self.servicio)
+#    def __unicode__(self):
+#        return unicode(self.servicio)
 
-    def horas_mes(self, mes, ano):
-        """ Genera el reporte de horas mensuales """
-        servicios = Servicios.objects.all().filter(
-            servicio__pk=self.pk,
-            fecha__month=mes,
-            fecha__year=ano)
-        counter = 0
-        for p in servicios:
-            counter += p.horas
-        return (servicios, counter)
+#    def horas_mes(self, mes, ano):
+#        """ Genera el reporte de horas mensuales """
+#        servicios = Servicios.objects.all().filter(
+ #           servicio__pk=self.pk,
+ #           fecha__month=mes,
+#            fecha__year=ano)
+#        counter = 0
+#        for p in servicios:
+#            counter += p.horas
+#        return (servicios, counter)
 
-    def horas_ano(self, ano):
-        """ Genera el reporte de horas anuales """
-        servicios = Servicios.objects.all().filter(
-            servicio__pk=self.pk,
-            fecha__year=ano)
+#    def horas_ano(self, ano):
+#        """ Genera el reporte de horas anuales """
+#        servicios = Servicios.objects.all().filter(
+#            servicio__pk=self.pk,
+#            fecha__year=ano)
 
-        horas_ano = 0
-        resultado = []
-        for mes in range(1, 13):
-            servicios_mes = []
-            horas_mes = 0
-            for p in servicios:
-                if p.fecha.month == mes:
-                    horas_ano += p.horas
-                    horas_mes += p.horas
-                    servicios_mes.append(p)
-            resultado.append((servicios_mes, horas_mes))
+#        horas_ano = 0
+#       resultado = []
+#        for mes in range(1, 13):
+#            servicios_mes = []
+#            horas_mes = 0
+#            for p in servicios:
+#                if p.fecha.month == mes:
+#                    horas_ano += p.horas
+#                    horas_mes += p.horas
+#                    servicios_mes.append(p)
+#            resultado.append((servicios_mes, horas_mes))
 
-        return (resultado, horas_ano)
+#        return (resultado, horas_ano)

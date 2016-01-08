@@ -2,7 +2,7 @@
 from django.contrib import admin
 from django.contrib.admin import SimpleListFilter
 from django.utils.translation import ugettext_lazy as _
-from apps.registros.models import Proyectos, Servicios
+from apps.registros.models import Proyectos#, Servicios
 from apps.proyectos_academicos.models import Institucion
 from apps.registros.actions import export_as_csv_action
 
@@ -96,4 +96,4 @@ class ServiciosAdmin(admin.ModelAdmin):
 # Registers
 
 admin.site.register(Proyectos, ProyectosAdmin)
-admin.site.register(Servicios, ServiciosAdmin)
+#admin.site.register(Servicios, ServiciosAdmin)

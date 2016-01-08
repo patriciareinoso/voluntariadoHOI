@@ -8,8 +8,8 @@ from apps.proyectos_academicos.models import (
     Institucion,
     Voluntario,
     Proyecto,
-    CategoriasProyecto,
-    Servicio
+    CategoriasProyecto#,
+    #Servicio
 )
 from apps.proyectos_academicos.forms import MonthlyForm, AnualForm
 from apps.proyectos_academicos.actions import export_as_csv_action, int_to_date
@@ -390,4 +390,4 @@ admin.site.register(Institucion, InstitucionAdmin)
 admin.site.register(Voluntario, VoluntarioAdmin)
 admin.site.register(Proyecto, ProyectoAdmin)
 admin.site.register(CategoriasProyecto)
-admin.site.register(Servicio, ServicioAdmin)
+#admin.site.register(Servicio, ServicioAdmin)
